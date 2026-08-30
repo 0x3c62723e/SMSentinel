@@ -1,7 +1,7 @@
 # SMSentinel
 
 Web-based SMS Scam & Phishing Detector.
-<img src="image.png" alt="SMSentinel">
+<img src="image.PNG" alt="SMSentinel">
 
 ## Developer
 Clay Revillosa
