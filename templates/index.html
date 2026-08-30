@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMSentinel | SMS Scam & Phishing Detector</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+  <div class="logo">SMS<span>entinel</span></div>
+  <div class="badge">🛡️ Scam & Phishing Detection</div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="shield">🛡️</div>
+    <h1>Verify Suspicious SMS Messages</h1>
+    <p>Upload a screenshot or paste an SMS message. SMSentinel will extract and analyze possible scam and phishing indicators.</p>
+  </section>
+
+  <section class="panel">
+    <div class="tabs">
+      <button class="tab active" data-tab="upload">📸 Upload Screenshot</button>
+      <button class="tab" data-tab="text">💬 Paste SMS Text</button>
+    </div>
+
+    <div id="upload" class="tab-content active">
+      <label id="dropZone" class="drop-zone">
+        <input id="imageInput" type="file" accept=".png,.jpg,.jpeg,.webp" hidden>
+        <div id="uploadText">
+          <div class="upload-icon">📷</div>
+          <strong>Click to upload SMS screenshot</strong>
+          <small>PNG, JPG, JPEG or WEBP · Maximum 10MB</small>
+        </div>
+        <img id="preview" alt="Screenshot preview">
+      </label>
+      <button id="analyzeImageBtn" class="analyze-btn" disabled>🛡️ Analyze Screenshot</button>
+    </div>
+
+    <div id="text" class="tab-content">
+      <textarea id="smsText" placeholder="I-paste dito ang buong SMS message..."></textarea>
+      <button id="analyzeTextBtn" class="analyze-btn">🛡️ Analyze SMS</button>
+    </div>
+  </section>
+
+  <section id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p>SMSentinel is analyzing the message...</p>
+  </section>
+
+  <section id="results" class="results hidden">
+    <div class="result-head">
+      <div>
+        <span class="eyebrow">ANALYSIS RESULT</span>
+        <h2 id="riskLevel">--</h2>
+      </div>
+      <div class="score-wrap">
+        <div class="score" id="score">0</div>
+        <small>/100 Risk Score</small>
+      </div>
+    </div>
+
+    <div class="meter"><div id="meterBar"></div></div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>⚠️ Detected Indicators</h3>
+        <ul id="indicators"></ul>
+      </div>
+      <div class="card">
+        <h3>🔗 Detected Links</h3>
+        <div id="urls"></div>
+      </div>
+    </div>
+
+    <div class="card recommendation">
+      <h3>🛡️ Recommendation</h3>
+      <p id="recommendation"></p>
+    </div>
+
+    <div class="card extracted">
+      <h3>📝 Extracted SMS Text</h3>
+      <pre id="extractedText"></pre>
+    </div>
+
+    <p class="disclaimer" id="disclaimer"></p>
+  </section>
+</main>
+
+<footer>
+  <strong>SMSentinel</strong> · SMS Scam & Phishing Detection System<br>
+  <span>Developer By Clay Revillosa</span>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
